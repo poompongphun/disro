@@ -2,17 +2,21 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import mockData from "@/Class/mockData.json";
+import AddProjectDialog from "../Project/AddProjectDialog";
+import { useState } from "react";
 
 const ButtonIcon = ({
   d,
   className,
   routeName,
   img,
+  onClick,
 }: {
   d?: string;
   className?: string;
   routeName?: string;
   img?: string;
+  onClick?: () => void;
 }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -24,11 +28,15 @@ const ButtonIcon = ({
           routeName === pathname ? "rounded-2xl" : "rounded-full"
         } ` + className
       }
-      onClick={() => {
-        if (routeName) {
-          router.push(routeName);
-        }
-      }}
+      onClick={
+        onClick
+          ? onClick
+          : () => {
+              if (routeName) {
+                router.push(routeName);
+              }
+            }
+      }
     >
       <div
         className={`w-2 rounded-xl absolute bg-white left-[-2px] h-8 transition-all opacity-0 ${
@@ -60,6 +68,7 @@ const ButtonIcon = ({
 };
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="h-screen flex">
       <div className="w-24 h-full bg-darkBlue py-4 flex flex-col justify-between items-center overflow-hidden">
@@ -72,7 +81,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           <hr className="my-4 mx-4" />
 
           <div className="flex justify-center items-center flex-col gap-2 ">
-            <ButtonIcon d="M12 4.5v15m7.5-7.5h-15"></ButtonIcon>
+            <ButtonIcon d="M12 4.5v15m7.5-7.5h-15" onClick={() => setOpen(true)}></ButtonIcon>
             {mockData.map((data, index) => (
               <ButtonIcon
                 routeName={"/projects/" + data.id}
@@ -92,8 +101,8 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           ></ButtonIcon>
         </div>
       </div>
-
       <div className="w-full relative">{children}</div>
+      <AddProjectDialog open={open} setOpen={setOpen}></AddProjectDialog>
     </div>
   );
 };
