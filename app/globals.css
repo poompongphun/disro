@@ -21,7 +21,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--dark-blue-rgb));
+  background: rgb(var(--medium-blue-rgb));
 }
 
 .auth-bg-gradient {
@@ -32,4 +32,8 @@ body {
     #182439 100%,
     #1f4172 100%
   );
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
