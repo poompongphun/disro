@@ -122,7 +122,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-24 h-full bg-darkBlue py-4 flex flex-col justify-between items-center overflow-hidden">
         <div className="h-full w-full overflow-auto no-scrollbar relative ">
           <ButtonIcon
-            routeName="/"
+            routeName="/projects"
             className="mx-auto"
             d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
           ></ButtonIcon>
@@ -132,7 +132,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
             <ButtonIcon d="M12 4.5v15m7.5-7.5h-15"></ButtonIcon>
             {serverData.map((data, index) => (
               <ButtonIcon
-                routeName={"/channels/" + data.id}
+                routeName={"/projects/" + data.id}
                 key={index}
                 className="overflow-hidden"
                 img={data.imgUrl}
