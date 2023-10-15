@@ -1,61 +1,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-
-const serverData = [
-  {
-    id: 1,
-    imgUrl: "https://picsum.photos/200/300?1",
-  },
-  {
-    id: 2,
-    imgUrl: "https://picsum.photos/200/300?2",
-  },
-  {
-    id: 3,
-    imgUrl: "https://picsum.photos/200/300?3",
-  },
-  {
-    id: 4,
-    imgUrl: "https://picsum.photos/200/300?4",
-  },
-  {
-    id: 5,
-    imgUrl: "https://picsum.photos/200/300?5",
-  },
-  {
-    id: 6,
-    imgUrl: "https://picsum.photos/200/300?6",
-  },
-  {
-    id: 7,
-    imgUrl: "https://picsum.photos/200/300?7",
-  },
-  {
-    id: 8,
-    imgUrl: "https://picsum.photos/200/300?8",
-  },
-  {
-    id: 9,
-    imgUrl: "https://picsum.photos/200/300?9",
-  },
-  {
-    id: 10,
-    imgUrl: "https://picsum.photos/200/300?10",
-  },
-  {
-    id: 11,
-    imgUrl: "https://picsum.photos/200/300?11",
-  },
-  {
-    id: 12,
-    imgUrl: "https://picsum.photos/200/300?12",
-  },
-  {
-    id: 13,
-    imgUrl: "https://picsum.photos/200/300?13",
-  },
-];
+import mockData from "@/Class/mockData.json";
 
 const ButtonIcon = ({
   d,
@@ -82,9 +28,6 @@ const ButtonIcon = ({
         if (routeName) {
           router.push(routeName);
         }
-      }}
-      onMouseEnter={() => {
-        console.log("enter");
       }}
     >
       <div
@@ -130,12 +73,12 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
 
           <div className="flex justify-center items-center flex-col gap-2 ">
             <ButtonIcon d="M12 4.5v15m7.5-7.5h-15"></ButtonIcon>
-            {serverData.map((data, index) => (
+            {mockData.map((data, index) => (
               <ButtonIcon
                 routeName={"/projects/" + data.id}
                 key={index}
                 className="overflow-hidden"
-                img={data.imgUrl}
+                img={data.image}
               ></ButtonIcon>
             ))}
           </div>

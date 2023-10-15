@@ -1,9 +1,9 @@
-const Channel = () => {
+const Project = () => {
   return (
     <div>
-      <h1>Channel</h1>
+      <h1>Project</h1>
     </div>
   );
 };
 
-export default Channel;
+export default Project;
