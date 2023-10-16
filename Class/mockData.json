@@ -3,30 +3,309 @@
       "id": 1,
       "name": "Project 1",
       "description": "Project Description",
-      "image": "https://picsum.photos/200/300?1"
+      "image": "https://picsum.photos/200/300?1",
+      "category": [
+        {
+          "id": 1,
+          "name": "ช่องบลาๆๆๆ",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "ทั่วไป"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            },
+            {
+              "id": 4,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Category 2",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Category 3",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Project 2",
       "description": "Project Description",
-      "image": "https://picsum.photos/200/300?2"
+      "image": "https://picsum.photos/200/300?2",
+      "category": [
+        {
+          "id": 1,
+          "name": "Category 1",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Category 2",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Category 3",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 3,
       "name": "Project 3",
       "description": "Project Description",
-      "image": "https://picsum.photos/200/300?3"
+      "image": "https://picsum.photos/200/300?3",
+      "category": [
+        {
+          "id": 1,
+          "name": "Category 1",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Category 2",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Category 3",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 4,
       "name": "Project 4",
       "description": "Project Description",
-      "image": "https://picsum.photos/200/300?4"
+      "image": "https://picsum.photos/200/300?4",
+      "category": [
+        {
+          "id": 1,
+          "name": "Category 1",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Category 2",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Category 3",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 5,
       "name": "Project 5",
       "description": "Project Description",
-      "image": "https://picsum.photos/200/300?5"
+      "image": "https://picsum.photos/200/300?5",
+      "category": [
+        {
+          "id": 1,
+          "name": "Category 1",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Category 2",
+          "room": [
+            {
+              "id": 1,
+              "type": "text",
+              "name": "Text Room"
+            },
+            {
+              "id": 2,
+              "type": "voice",
+              "name": "Voice Room"
+            },
+            {
+              "id": 3,
+              "type": "board",
+              "name": "Board Room"
+            }
+          ]
+        }
+      ]
     }
 ]
