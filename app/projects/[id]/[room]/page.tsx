@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import mockData from "@/Class/mockData.json";
 import Room from "@/Class/Room";
 import ChatRoom from "@/components/Project/Room/ChatRoom";
+import BoardRoom from "@/components/Project/Room/BoardRoom";
 
 const Room = () => {
   // MockData
@@ -19,8 +20,10 @@ const Room = () => {
   ) as Room;
   console.log(currentRoom);
 
-  return (
-    currentRoom.type === "text" && <ChatRoom room={currentRoom}></ChatRoom>
+  return currentRoom.type === "text" ? (
+    <ChatRoom room={currentRoom}></ChatRoom>
+  ) : (
+    <BoardRoom room={currentRoom}></BoardRoom>
   );
 };
 

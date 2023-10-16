@@ -1,6 +1,5 @@
 import Room from "@/Class/Room";
 import HashtagIcon from "@heroicons/react/20/solid/esm/HashtagIcon";
-import TableCellsIcon from "@heroicons/react/20/solid/esm/TableCellsIcon";
 import ArrowUpTrayIcon from "@heroicons/react/20/solid/esm/ArrowUpTrayIcon";
 import ChatMessage from "@/components/Project/Room/ChatMessage";
 
@@ -9,12 +8,7 @@ const ChatRoom = ({ room }: { room: Room }) => {
     <div className="h-full flex justify-between flex-col">
       <div>
         <div className="flex justify-start items-center p-2 gap-1">
-          {room.type === "text" ? (
-            <HashtagIcon className="w-5 h-5"></HashtagIcon>
-          ) : (
-            <TableCellsIcon className="w-5 h-5"></TableCellsIcon>
-          )}
-
+          <HashtagIcon className="w-5 h-5"></HashtagIcon>
           <h1 className="text-xl">{room.name}</h1>
         </div>
         <hr />

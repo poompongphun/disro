@@ -1,5 +1,5 @@
 import Cog6ToothIcon from "@heroicons/react/20/solid/esm/Cog6ToothIcon";
-import Category from "./Room/Category";
+import Category from "./Category/Category";
 import Image from "next/image";
 import MicrophoneIcon from "@heroicons/react/20/solid/esm/MicrophoneIcon";
 import SpeakerWaveIcon from "@heroicons/react/20/solid/esm/SpeakerWaveIcon";
