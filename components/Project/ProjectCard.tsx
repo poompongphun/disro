@@ -1,4 +1,4 @@
-import Project from "@/Class/project";
+import Project from "@/Class/Project";
 import Image from "next/image";
 import Link from "next/link";
 const ProjectCard = ({ id, image, name, description }: Project) => {
