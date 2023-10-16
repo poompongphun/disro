@@ -3,7 +3,7 @@ import Room from "./Room";
 interface Category {
   id: number;
   name: string;
-  room: Room[];
+  rooms: Room[];
 }
 
 export default Category;

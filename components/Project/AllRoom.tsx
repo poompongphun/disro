@@ -18,7 +18,7 @@ const AllRoom = ({ project }: { project: Project }) => {
         <hr />
       </div>
       <div className="overflow-auto h-full no-scrollbar">
-        {project.category.map((category, index) => (
+        {project.categorys.map((category, index) => (
           <Category key={index} category={category} />
         ))}
       </div>

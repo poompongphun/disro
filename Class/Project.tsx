@@ -5,7 +5,7 @@ interface Project {
   name: string;
   description: string;
   image: string;
-  category: Category[];
+  categorys: Category[];
 }
 
 export default Project;

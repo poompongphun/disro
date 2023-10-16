@@ -36,7 +36,7 @@ const Category = ({ category }: { category: Category }) => {
         </button>
       </div>
       <div {...getCollapseProps()}>
-        {category.room.map((room, index) => {
+        {category.rooms.map((room, index) => {
           return room.type === "text" ? (
             <TextRoom key={index} room={room} />
           ) : room.type === "voice" ? (

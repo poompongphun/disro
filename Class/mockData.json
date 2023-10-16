@@ -4,11 +4,11 @@
       "name": "Project 1",
       "description": "Project Description",
       "image": "https://picsum.photos/200/300?1",
-      "category": [
+      "categories": [
         {
           "id": 1,
           "name": "ช่องบลาๆๆๆ",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -34,7 +34,7 @@
         {
           "id": 2,
           "name": "Category 2",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -45,7 +45,7 @@
         {
           "id": 3,
           "name": "Category 3",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -70,11 +70,11 @@
       "name": "Project 2",
       "description": "Project Description",
       "image": "https://picsum.photos/200/300?2",
-      "category": [
+      "categories": [
         {
           "id": 1,
           "name": "Category 1",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -95,7 +95,7 @@
         {
           "id": 2,
           "name": "Category 2",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -116,7 +116,7 @@
         {
           "id": 3,
           "name": "Category 3",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -131,11 +131,11 @@
       "name": "Project 3",
       "description": "Project Description",
       "image": "https://picsum.photos/200/300?3",
-      "category": [
+      "categories": [
         {
           "id": 1,
           "name": "Category 1",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -156,7 +156,7 @@
         {
           "id": 2,
           "name": "Category 2",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -177,7 +177,7 @@
         {
           "id": 3,
           "name": "Category 3",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -202,11 +202,11 @@
       "name": "Project 4",
       "description": "Project Description",
       "image": "https://picsum.photos/200/300?4",
-      "category": [
+      "categories": [
         {
           "id": 1,
           "name": "Category 1",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -217,7 +217,7 @@
         {
           "id": 2,
           "name": "Category 2",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -238,7 +238,7 @@
         {
           "id": 3,
           "name": "Category 3",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -263,11 +263,11 @@
       "name": "Project 5",
       "description": "Project Description",
       "image": "https://picsum.photos/200/300?5",
-      "category": [
+      "categories": [
         {
           "id": 1,
           "name": "Category 1",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
@@ -288,7 +288,7 @@
         {
           "id": 2,
           "name": "Category 2",
-          "room": [
+          "rooms": [
             {
               "id": 1,
               "type": "text",
