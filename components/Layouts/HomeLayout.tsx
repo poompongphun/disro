@@ -49,7 +49,7 @@ const ButtonIcon = ({
           alt="Profile Picture"
           width={56}
           height={56}
-          className="w-full h-full object-cover"
+          className="w-full h-full aspect-square object-cover"
         />
       ) : (
         <svg
@@ -81,7 +81,10 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           <hr className="my-4 mx-4" />
 
           <div className="flex justify-center items-center flex-col gap-2 ">
-            <ButtonIcon d="M12 4.5v15m7.5-7.5h-15" onClick={() => setOpen(true)}></ButtonIcon>
+            <ButtonIcon
+              d="M12 4.5v15m7.5-7.5h-15"
+              onClick={() => setOpen(true)}
+            ></ButtonIcon>
             {mockData.map((data, index) => (
               <ButtonIcon
                 routeName={"/projects/" + data.id}

@@ -13,7 +13,7 @@ const Member = () => {
           alt="avatar"
           width={20}
           height={20}
-          className="rounded-full"
+          className="rounded-full aspect-square object-cover"
         ></Image>
         <span className="text-sm">Member1</span>
       </div>

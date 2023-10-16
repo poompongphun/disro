@@ -29,7 +29,7 @@ const AllRoom = ({ project }: { project: Project }) => {
             alt="avatar"
             width={30}
             height={30}
-            className="rounded-full"
+            className="rounded-full aspect-square object-cover"
           ></Image>
           <span className="text-md">Member1</span>
         </div>

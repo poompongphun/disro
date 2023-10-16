@@ -12,7 +12,7 @@ const ProjectCard = ({ id, image, name, description }: Project) => {
         alt="Project Image"
         width={100}
         height={100}
-        className="aspect-square mx-auto rounded-md"
+        className="aspect-square object-cover mx-auto rounded-md"
       />
       <div className="text-center">
         <h1 className="text-xl font-bold">{name}</h1>
