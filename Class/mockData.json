@@ -63,6 +63,13 @@
             }
           ]
         }
+      ],
+      "members": [
+        {
+          "id": 1,
+          "username": "Member 1",
+          "image": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        }
       ]
     },
     {
@@ -123,6 +130,18 @@
               "name": "Text Room"
             }
           ]
+        }
+      ],
+      "members": [
+        {
+          "id": 1,
+          "username": "Member 1",
+          "image": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        },
+        {
+          "id": 2,
+          "username": "Member 2",
+          "image": "https://picsum.photos/200/300?1"
         }
       ]
     },
@@ -195,6 +214,18 @@
             }
           ]
         }
+      ],
+      "members": [
+        {
+          "id": 1,
+          "username": "Member 1",
+          "image": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        },
+        {
+          "id": 2,
+          "username": "Member 2",
+          "image": "https://picsum.photos/200/300?1"
+        }
       ]
     },
     {
@@ -256,6 +287,18 @@
             }
           ]
         }
+      ],
+      "members": [
+        {
+          "id": 1,
+          "username": "Member 1",
+          "image": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        },
+        {
+          "id": 2,
+          "username": "Member 2",
+          "image": "https://picsum.photos/200/300?1"
+        }
       ]
     },
     {
@@ -305,6 +348,13 @@
               "name": "Board Room"
             }
           ]
+        }
+      ],
+      "members": [
+        {
+          "id": 1,
+          "username": "Member 1",
+          "image": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
         }
       ]
     }

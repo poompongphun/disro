@@ -1,4 +1,5 @@
 import Category from "./Category";
+import User from "./User";
 
 interface Project {
   id: number;
@@ -6,6 +7,7 @@ interface Project {
   description: string;
   image: string;
   categories: Category[];
+  members: User[];
 }
 
 export default Project;

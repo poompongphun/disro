@@ -24,7 +24,7 @@ const ProjectRoomLayout = ({ children }: { children: React.ReactNode }) => {
         {children}
       </div>
       <div className="w-64 bg-mediumBlue h-full">
-        <Members />
+        <Members members={project.members} />
       </div>
     </div>
   );
