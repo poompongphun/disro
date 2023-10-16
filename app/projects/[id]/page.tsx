@@ -1,7 +1,7 @@
 const Project = () => {
   return (
-    <div>
-      <h1>Project</h1>
+    <div className="flex justify-center items-center h-full">
+      <h1>Hello World</h1>
     </div>
   );
 };

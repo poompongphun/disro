@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import mockData from "@/Class/mockData.json";
 import AddProjectDialog from "../Project/AddProjectDialog";
@@ -18,14 +18,15 @@ const ButtonIcon = ({
   img?: string;
   onClick?: () => void;
 }) => {
-  const pathname = usePathname();
   const router = useRouter();
+  const { id } = useParams();
+
   return (
     <button
       type="button"
       className={
         `w-14 h-14 bg-mediumBlue flex justify-center items-center hover:opacity-90 transition-all ${
-          routeName === pathname ? "rounded-2xl" : "rounded-full"
+          routeName === `/projects/${id}` ? "rounded-2xl" : "rounded-full"
         } ` + className
       }
       onClick={
@@ -40,7 +41,7 @@ const ButtonIcon = ({
     >
       <div
         className={`w-2 rounded-xl absolute bg-white left-[-2px] h-8 transition-all opacity-0 ${
-          routeName === pathname && "opacity-100"
+          routeName === `/projects/${id}` && "opacity-100"
         }`}
       ></div>
       {img ? (

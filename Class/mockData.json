@@ -36,7 +36,7 @@
           "name": "Category 2",
           "rooms": [
             {
-              "id": 1,
+              "id": 5,
               "type": "text",
               "name": "Text Room"
             }
@@ -47,17 +47,17 @@
           "name": "Category 3",
           "rooms": [
             {
-              "id": 1,
+              "id": 6,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 7,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 8,
               "type": "board",
               "name": "Board Room"
             }
@@ -79,21 +79,21 @@
       "image": "https://picsum.photos/200/300?2",
       "categories": [
         {
-          "id": 1,
+          "id": 9,
           "name": "Category 1",
           "rooms": [
             {
-              "id": 1,
+              "id": 10,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 11,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 12,
               "type": "board",
               "name": "Board Room"
             }
@@ -104,17 +104,17 @@
           "name": "Category 2",
           "rooms": [
             {
-              "id": 1,
+              "id": 12,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 14,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 15,
               "type": "board",
               "name": "Board Room"
             }
@@ -125,7 +125,7 @@
           "name": "Category 3",
           "rooms": [
             {
-              "id": 1,
+              "id": 16,
               "type": "text",
               "name": "Text Room"
             }
@@ -156,17 +156,17 @@
           "name": "Category 1",
           "rooms": [
             {
-              "id": 1,
+              "id": 17,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 18,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 19,
               "type": "board",
               "name": "Board Room"
             }
@@ -177,17 +177,17 @@
           "name": "Category 2",
           "rooms": [
             {
-              "id": 1,
+              "id": 20,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 21,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 22,
               "type": "board",
               "name": "Board Room"
             }
@@ -198,17 +198,17 @@
           "name": "Category 3",
           "rooms": [
             {
-              "id": 1,
+              "id": 23,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 24,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 25,
               "type": "board",
               "name": "Board Room"
             }
@@ -250,17 +250,17 @@
           "name": "Category 2",
           "rooms": [
             {
-              "id": 1,
+              "id": 26,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 27,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 28,
               "type": "board",
               "name": "Board Room"
             }
@@ -271,17 +271,17 @@
           "name": "Category 3",
           "rooms": [
             {
-              "id": 1,
+              "id": 29,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 30,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 31,
               "type": "board",
               "name": "Board Room"
             }
@@ -312,17 +312,17 @@
           "name": "Category 1",
           "rooms": [
             {
-              "id": 1,
+              "id": 32,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 33,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 34,
               "type": "board",
               "name": "Board Room"
             }
@@ -333,17 +333,17 @@
           "name": "Category 2",
           "rooms": [
             {
-              "id": 1,
+              "id": 35,
               "type": "text",
               "name": "Text Room"
             },
             {
-              "id": 2,
+              "id": 36,
               "type": "voice",
               "name": "Voice Room"
             },
             {
-              "id": 3,
+              "id": 37,
               "type": "board",
               "name": "Board Room"
             }
