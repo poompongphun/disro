@@ -4,6 +4,7 @@ import Image from "next/image";
 import MicrophoneIcon from "@heroicons/react/20/solid/esm/MicrophoneIcon";
 import SpeakerWaveIcon from "@heroicons/react/20/solid/esm/SpeakerWaveIcon";
 import Project from "@/Class/Project";
+import Link from "next/link";
 
 const AllRoom = ({ project }: { project: Project }) => {
   return (
@@ -11,9 +12,9 @@ const AllRoom = ({ project }: { project: Project }) => {
       <div>
         <div className="flex justify-between items-center p-2">
           <h1 className="text-xl font-medium">{project.name}</h1>
-          <button>
+          <Link href={`/setting`}>
             <Cog6ToothIcon className="w-5 h-5"></Cog6ToothIcon>
-          </button>
+          </Link>
         </div>
         <hr />
       </div>
