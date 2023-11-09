@@ -25,7 +25,9 @@ const Room = () => {
   const [showChat, setShowChat] = useState(false);
 
   var socket: any;
-  socket = io("http://localhost:3001");
+  socket = io("/", {
+    path: "/api/socket",
+  });
 
   const handleJoin = () => {
     if (currentRoom.id !== "") {
