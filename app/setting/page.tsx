@@ -1,8 +1,7 @@
+import SettingProject from "@/components/Project/Setting/SettingProject";
 const setting = () => {
     return (
-      <div className="flex justify-center items-center h-full">
-        <h1>Hello World</h1>
-      </div>
+        <SettingProject/>
     );
   };
   
