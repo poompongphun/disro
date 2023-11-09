@@ -1,7 +1,7 @@
 import Room from "./Room";
 
 interface Category {
-  id: number;
+  id: string;
   name: string;
   rooms: Room[];
 }

@@ -2,7 +2,7 @@ import Category from "./Category";
 import User from "./User";
 
 interface Project {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string;

@@ -9,7 +9,7 @@ const ProjectRoomLayout = ({ children }: { children: React.ReactNode }) => {
   // MockData
   const { id } = useParams();
   const project: Project = mockData.find(
-    (project) => project.id === Number(id)
+    (project) => project.id === String(id)
   ) as Project;
 
   return (

@@ -1,5 +1,5 @@
 interface Room {
-  id: number;
+  id: string;
   type: string;
   name: string;
 }
