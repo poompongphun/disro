@@ -6,7 +6,7 @@ import Room from "@/Class/Room";
 import ChatRoom from "@/components/Project/Room/ChatRoom";
 import BoardRoom from "@/components/Project/Room/BoardRoom";
 import { Socket, io } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Room = () => {
   // MockData
@@ -22,27 +22,34 @@ const Room = () => {
   ) as Room;
   console.log(currentRoom);
 
-  const [showChat, setShowChat] = useState(false);
-
-  const socket: Socket = io("/", {
-    path: "/api/socket",
-  });
-
-  const handleJoin = () => {
-    if (currentRoom.id !== "") {
-      socket.emit("join_room", currentRoom.id);
-      setShowChat(true);
-    } else {
-      alert("Room Id is not valid");
-    }
-  };
+  const socketRef = useRef<Socket>();
 
   useEffect(() => {
+    const handleJoin = () => {
+      if (currentRoom.id !== "" && socketRef.current) {
+        socketRef.current.emit("join_room", currentRoom.id);
+      } else {
+        alert("Room Id is not valid");
+      }
+    };
+
+    socketRef.current = io("/", {
+      path: "/api/socket",
+    });
+    console.log("connect");
+
     handleJoin();
-  }, []);
+
+    return () => {
+      console.log("disconnect");
+      // IDK WHY THIS DOESN'T WORK
+      // if (socketRef.current && socketRef.current.active)
+      //   socketRef.current.disconnect();
+    };
+  }, [currentRoom.id]);
 
   return currentRoom.type === "text" ? (
-    <ChatRoom room={currentRoom} socket={socket}></ChatRoom>
+    <ChatRoom room={currentRoom} socket={socketRef}></ChatRoom>
   ) : (
     <BoardRoom room={currentRoom}></BoardRoom>
   );

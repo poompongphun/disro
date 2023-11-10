@@ -3,7 +3,7 @@ import Room from "@/Class/Room";
 import HashtagIcon from "@heroicons/react/20/solid/esm/HashtagIcon";
 import ArrowUpTrayIcon from "@heroicons/react/20/solid/esm/ArrowUpTrayIcon";
 import ChatMessage from "@/components/Project/Room/ChatMessage";
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { Socket } from "socket.io-client";
 
 const messagesDB = [
@@ -28,7 +28,13 @@ interface Message {
   text: string;
 }
 
-const ChatRoom = ({ room, socket }: { room: Room; socket: Socket }) => {
+const ChatRoom = ({
+  room,
+  socket,
+}: {
+  room: Room;
+  socket: MutableRefObject<Socket | undefined>;
+}) => {
   const [currentMsg, setCurrentMsg] = useState("");
   const [messages, setMessages] = useState<Message[]>(messagesDB);
 
@@ -45,7 +51,7 @@ const ChatRoom = ({ room, socket }: { room: Room; socket: Socket }) => {
         },
         text: currentMsg,
       };
-      await socket.emit("send_msg", msgData);
+      if (socket.current) await socket.current.emit("send_msg", msgData);
       setCurrentMsg("");
     }
   };
@@ -57,9 +63,11 @@ const ChatRoom = ({ room, socket }: { room: Room; socket: Socket }) => {
       setMessages((pre) => [data, ...pre]);
     };
 
-    socket.on("receive_msg", func);
+    if (socket.current) socket.current.on("receive_msg", func);
     return () => {
-      socket.off("receive_msg", func);
+      if (socket.current) {
+        socket.current.off("receive_msg", func);
+      }
     };
   }, []);
 
