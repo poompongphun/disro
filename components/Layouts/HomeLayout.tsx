@@ -19,7 +19,7 @@ const ButtonIcon = ({
   onClick?: () => void;
 }) => {
   const router = useRouter();
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
 
   return (
     <button

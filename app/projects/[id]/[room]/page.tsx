@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Room = () => {
   // MockData
-  const { id, room: roomParam } = useParams();
+  const { id, room: roomParam } = useParams() as { room: string; id: string };
   const project: Project = mockData.find(
     (project) => project.id === String(id)
   ) as Project;

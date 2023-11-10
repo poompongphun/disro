@@ -7,7 +7,7 @@ import Project from "@/Class/Project";
 
 const ProjectRoomLayout = ({ children }: { children: React.ReactNode }) => {
   // MockData
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
   const project: Project = mockData.find(
     (project) => project.id === String(id)
   ) as Project;
