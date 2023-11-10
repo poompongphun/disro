@@ -4,6 +4,7 @@ import HashtagIcon from "@heroicons/react/20/solid/esm/HashtagIcon";
 import ArrowUpTrayIcon from "@heroicons/react/20/solid/esm/ArrowUpTrayIcon";
 import ChatMessage from "@/components/Project/Room/ChatMessage";
 import { useEffect, useState } from "react";
+import { Socket } from "socket.io-client";
 
 const messagesDB = [
   {
@@ -27,7 +28,7 @@ interface Message {
   text: string;
 }
 
-const ChatRoom = ({ room, socket }: { room: Room; socket: any }) => {
+const ChatRoom = ({ room, socket }: { room: Room; socket: Socket }) => {
   const [currentMsg, setCurrentMsg] = useState("");
   const [messages, setMessages] = useState<Message[]>(messagesDB);
 

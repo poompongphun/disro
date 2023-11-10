@@ -5,7 +5,7 @@ import mockData from "@/Class/mockData.json";
 import Room from "@/Class/Room";
 import ChatRoom from "@/components/Project/Room/ChatRoom";
 import BoardRoom from "@/components/Project/Room/BoardRoom";
-import { io } from "socket.io-client";
+import { Socket, io } from "socket.io-client";
 import { useEffect, useState } from "react";
 
 const Room = () => {
@@ -24,8 +24,7 @@ const Room = () => {
 
   const [showChat, setShowChat] = useState(false);
 
-  var socket: any;
-  socket = io("/", {
+  const socket: Socket = io("/", {
     path: "/api/socket",
   });
 
