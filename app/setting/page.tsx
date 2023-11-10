@@ -1,9 +1,9 @@
-import SettingProject from "@/components/Project/Setting/SettingProject";
-const setting = () => {
-    return (
-        <SettingProject/>
-    );
-  };
-  
-  export default setting;
-  
+const ProfilePage = () => {
+  return (
+    <div>
+      <h1>setting Page</h1>
+    </div>
+  );
+};
+
+export default ProfilePage;

@@ -5,14 +5,16 @@ import MicrophoneIcon from "@heroicons/react/20/solid/esm/MicrophoneIcon";
 import SpeakerWaveIcon from "@heroicons/react/20/solid/esm/SpeakerWaveIcon";
 import Project from "@/Class/Project";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const AllRoom = ({ project }: { project: Project }) => {
+  const { id } = useParams() as { id: string };
   return (
     <div className="h-full relative flex flex-col">
       <div>
         <div className="flex justify-between items-center p-2">
           <h1 className="text-xl font-medium">{project.name}</h1>
-          <Link href={`/setting`}>
+          <Link href={`/projects/${id}/setting`}>
             <Cog6ToothIcon className="w-5 h-5"></Cog6ToothIcon>
           </Link>
         </div>

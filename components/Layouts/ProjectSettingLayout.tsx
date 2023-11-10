@@ -1,38 +1,37 @@
 import React from "react";
-import Link from "next/link";
+
 const buttonPath = [
   {
-    name: "Profile",
-    path: "/setting/profile",
+    name: "Details",
+    path: "/setting",
   },
   {
-    name: "Premium",
-    path: "/setting/premium",
+    name: "Roles",
+    path: "/setting/roles",
   },
   {
-    name: "Notification",
-    path: "/setting/notification",
-  },
-  {
-    name: "Voice",
-    path: "/setting/voice",
+    name: "Members",
+    path: "/setting/members",
   },
 ];
 
-const SettingLayout = ({ children }: { children: React.ReactNode }) => {
+const ProfileSettingLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-row text-center h-full w-full">
       <div className="flex flex-col bg-[#132043] w-1/5 py-10 justify-between max-w-[300px]">
-        <div className="flex-1 py-5 my-6 w-full ">
+        <div className="flex-1 py-5 my-6 w-full">
           <div className="flex flex-col gap-y-4 text-lg">
             {buttonPath.map((item) => (
-              <Link
+              <button
+                type="button"
                 key={item.path}
                 className="hover:bg-[#1F4172] py-4"
-                href={item.path}
+                onClick={() => {
+                  alert(item.name);
+                }}
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
           </div>
         </div>
@@ -42,7 +41,7 @@ const SettingLayout = ({ children }: { children: React.ReactNode }) => {
             alert("Delete Project");
           }}
         >
-          Logout
+          Delete Project
         </button>
       </div>
       {children}
@@ -50,4 +49,4 @@ const SettingLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default SettingLayout;
+export default ProfileSettingLayout;
