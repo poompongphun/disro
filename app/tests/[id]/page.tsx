@@ -2,7 +2,6 @@
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Socket, io } from "socket.io-client";
-import useSocket from "@/hooks/useSocket";
 
 const ICE_SERVERS = {
   iceServers: [
