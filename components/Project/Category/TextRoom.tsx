@@ -4,7 +4,7 @@ import { useRouter, useParams } from "next/navigation";
 
 const TextRoom = ({ room }: { room: Room }) => {
   const router = useRouter();
-  const { room: roomParam, id } = useParams();
+  const { room: roomParam, id } = useParams() as { room: string; id: string };
 
   return (
     <button
