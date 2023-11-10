@@ -26,28 +26,28 @@ const SocketHandler = (req: any, res: any) => {
         console.log("A user disconnected:", socket.id);
       });
 
-      socket.on("join", (roomName) => {
+      socket.on("join", (data) => {
         const { rooms } = io.sockets.adapter;
-        const room = rooms.get(roomName);
+        const room = rooms.get(data.roomId);
 
         // room == undefined when no such room exists.
         if (room === undefined) {
-          socket.join(roomName);
-          socket.emit("created");
+          socket.join(data.roomId);
+          socket.emit("created", data);
         } else if (room.size === 1) {
           // room.size == 1 when one person is inside the room.
-          socket.join(roomName);
-          socket.emit("joined");
+          socket.join(data.roomId);
+          socket.emit("joined", data);
         } else {
           // when there are already two people inside the room.
-          socket.emit("full");
+          socket.emit("full", data);
         }
         console.log(rooms);
       });
 
       // Triggered when the person who joined the room is ready to communicate.
-      socket.on("ready", (roomName) => {
-        socket.broadcast.to(roomName).emit("ready"); // Informs the other peer in the room.
+      socket.on("ready", (data) => {
+        socket.broadcast.to(data.roomId).emit("ready", data); // Informs the other peer in the room.
       });
 
       // Triggered when server gets an icecandidate from a peer in the room.
@@ -69,9 +69,9 @@ const SocketHandler = (req: any, res: any) => {
         socket.broadcast.to(roomName).emit("answer", answer); // Sends Answer to the other peer in the room.
       });
 
-      socket.on("leave", (roomName) => {
-        socket.leave(roomName);
-        socket.broadcast.to(roomName).emit("leave");
+      socket.on("leave", (data) => {
+        socket.leave(data.roomId);
+        socket.broadcast.to(data.roomId).emit("leave", data);
       });
     });
 

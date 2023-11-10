@@ -1,7 +1,21 @@
+import User from "@/Class/User";
 import MicrophoneIcon from "@heroicons/react/20/solid/esm/MicrophoneIcon";
+import { PhoneXMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
-const Member = () => {
+const Member = ({
+  user,
+  mic,
+  toggleMic,
+  leave,
+  showAction
+}: {
+  user: User;
+  mic: boolean;
+  toggleMic: () => void;
+  leave: () => void;
+  showAction: boolean;
+}) => {
   return (
     <button
       type="button"
@@ -9,17 +23,25 @@ const Member = () => {
     >
       <div className="flex items-center gap-1">
         <Image
-          src="https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+          src={user.image}
           alt="avatar"
           width={20}
           height={20}
           className="rounded-full aspect-square object-cover"
         ></Image>
-        <span className="text-sm">Member1</span>
+        <span className="text-sm max-w-[130px] overflow-hidden">
+          {user.username}
+        </span>
       </div>
-      <div>
-        <MicrophoneIcon className="w-4 h-4"></MicrophoneIcon>
-      </div>
+      {
+        showAction && <div className="flex gap-1 absolute right-2">
+          <MicrophoneIcon
+            className={`w-4 h-4 ${mic ? "" : "text-red-600"}`}
+            onClick={toggleMic}
+          ></MicrophoneIcon>
+          <PhoneXMarkIcon className="w-4 h-4" onClick={leave}></PhoneXMarkIcon>
+        </div>
+      }
     </button>
   );
 };

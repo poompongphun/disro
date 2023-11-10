@@ -36,14 +36,14 @@ const AllRoom = ({ project }: { project: Project }) => {
           ></Image>
           <span className="text-md">Member1</span>
         </div>
-        <div className="flex justify-center items-center gap-2">
+        {/* <div className="flex justify-center items-center gap-2">
           <button type="button">
             <MicrophoneIcon className="w-5 h-5"></MicrophoneIcon>
           </button>
           <button type="button">
             <SpeakerWaveIcon className="w-5 h-5"></SpeakerWaveIcon>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
