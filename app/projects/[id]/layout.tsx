@@ -14,7 +14,7 @@ const ProjectRoomLayout = ({ children }: { children: React.ReactNode }) => {
     (project) => project.id === String(id)
   ) as Project;
 
-  return pathname === `/projects/${id}/setting` ? (
+  return pathname?.startsWith(`/projects/${id}/setting`) ? (
     <Setting>{children}</Setting>
   ) : (
     <div className="h-full flex justify-between items-start relative">
