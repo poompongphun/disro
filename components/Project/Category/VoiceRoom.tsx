@@ -336,12 +336,12 @@ const VoiceRoom = ({ room }: { room: Room }) => {
       <div>
         <video autoPlay ref={userVideoRef} className="hidden" />
         <video autoPlay ref={peerVideoRef} className="hidden" />
-        <button onClick={toggleMic} type="button">
+        {/* <button onClick={toggleMic} type="button">
           {micActive ? "Mute Mic" : "UnMute Mic"}
         </button>
         <button onClick={leaveRoom} type="button">
           Leave
-        </button>
+        </button> */}
         {/* <button onClick={toggleCamera} type="button">
           {cameraActive ? "Stop Camera" : "Start Camera"}
         </button> */}
