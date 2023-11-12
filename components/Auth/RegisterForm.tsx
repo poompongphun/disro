@@ -2,19 +2,47 @@
 import { useState } from "react";
 import TextInput from "./TextInput";
 import Link from "next/link";
+import axios from "@/utils/axios";
+import {useRouter} from "next/navigation";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const submit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const createUser = await axios.post(
+      "/user-service/addUser",
+      {
+        email,
+        username,
+        phone,
+        password,
+        birthdate,
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    if (createUser) {
+      router.push("/login");
+    } else {
+      alert("Account creation failed");
+    }
+  };
   return (
     <div className="w-full max-w-[400px] text-black flex flex-col gap-6 mx-5">
       <div>
         <h1 className="text-3xl font-bold">Nice to meet you!</h1>
         <span>Create your account</span>
       </div>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={submit}>
         <TextInput
           type="email"
           placeholder="Email Address"
@@ -70,7 +98,7 @@ const RegisterForm = () => {
         <TextInput
           type="date"
           placeholder="Date of Birth"
-          value={password}
+          value={birthdate}
           Icon={
             <path
               strokeLinecap="round"
@@ -78,7 +106,7 @@ const RegisterForm = () => {
               d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
             />
           }
-          onInput={(e) => setPassword(e.currentTarget.value)}
+          onInput={(e) => setBirthdate(e.currentTarget.value)}
         ></TextInput>
         <button
           type="submit"

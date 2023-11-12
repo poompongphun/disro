@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 const buttonPath = [
   {
     name: "Profile",
@@ -39,7 +40,7 @@ const SettingLayout = ({ children }: { children: React.ReactNode }) => {
         <button
           className="py-5 my-6 w-full hover:bg-[#1F4172] text-red-600"
           onClick={() => {
-            alert("Delete Project");
+            signOut();
           }}
         >
           Logout

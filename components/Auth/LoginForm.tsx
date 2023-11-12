@@ -2,17 +2,39 @@
 import { useState } from "react";
 import TextInput from "./TextInput";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const submit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    // const loginUser = await axios.post("/auth-service/login", {
+    //   email,
+    //   password,
+    // });
+    // console.log(loginUser);
+    const login = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false,
+      callbackUrl: `/`,
+    });
+    if (login?.ok) {
+      router.push("/");
+    } else {
+      alert("Wrong email or password");
+    }
+  };
   return (
     <div className="w-full max-w-[400px] text-black flex flex-col gap-6 mx-5">
       <div>
         <h1 className="text-3xl font-bold">Hello Again!</h1>
         <span>Welcome Back</span>
       </div>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={submit}>
         <TextInput
           type="email"
           placeholder="Email Address"
