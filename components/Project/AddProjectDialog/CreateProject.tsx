@@ -1,10 +1,40 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import axios from "@/utils/axios";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { addProjects } from "@/store/serverSlice";
+import { AppDispatch } from "@/app/store";
 
 const CreateProject = ({
   setOpen,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { data: session } = useSession();
+  const user = session?.user as { _id: string; username: string };
+  const [teamName, setTeamName] = useState("");
+  const [description, setDescription] = useState("");
+  const create = async () => {
+    const createProject = await axios.post(
+      "/manageserver-service/createServer",
+      {
+        name: teamName,
+        description: description,
+        userId: user._id,
+        username: user.username,
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    if (createProject) {
+      dispatch(addProjects(createProject.data));
+      setOpen(false);
+    }
+  };
   return (
     <div>
       <div className="pt-5 pb-12">
@@ -17,6 +47,7 @@ const CreateProject = ({
             <input
               type="text"
               className="transition-all border border-lightBlue focus:border-mediumBlue focus:outline-none py-2 pl-4 pr-4 rounded-lg w-full"
+              onChange={(e) => setTeamName(e.currentTarget.value)}
             ></input>
           </div>
           <div className="flex flex-col w-full">
@@ -24,9 +55,10 @@ const CreateProject = ({
             <input
               type="text"
               className="transition-all border border-lightBlue focus:border-mediumBlue focus:outline-none py-2 pl-4 pr-4 rounded-lg w-full"
+              onChange={(e) => setDescription(e.currentTarget.value)}
             ></input>
           </div>
-          <div className="flex flex-col w-full">
+          {/* <div className="flex flex-col w-full">
             <label htmlFor="">Privacy</label>
             <div className="flex gap-10 mt-1">
               <div>
@@ -36,6 +68,7 @@ const CreateProject = ({
                   type="radio"
                   className="peer/private mr-1"
                   value="private"
+
                 ></input>
                 <label
                   htmlFor="private"
@@ -60,7 +93,7 @@ const CreateProject = ({
                 </label>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex justify-end items-center gap-3 p-3">
@@ -72,7 +105,7 @@ const CreateProject = ({
         </button>
         <button
           className="px-4 py-2 bg-darkBlue text-white rounded-md max-w-[130px] w-full hover:opacity-90"
-          onClick={() => setOpen(false)}
+          onClick={create}
         >
           Create
         </button>
