@@ -13,15 +13,17 @@ import { useSelector } from "react-redux";
 const Room = () => {
   // MockData
   const { id, room: roomParam } = useParams() as { room: string; id: string };
-  const projects = useSelector((state: RootState) => state.servers.value);
+  const { value: projects, loading } = useSelector(
+    (state: RootState) => state.servers
+  );
   const project: Project = projects.find(
     (project) => project._id === String(id)
   ) as Project;
   const AllRoom: Room[] = project.categories
-    .map((category) => category.rooms)
+    .map((category) => category.room)
     .flat();
   const currentRoom: Room = AllRoom.find(
-    (room) => room.id === String(roomParam)
+    (room) => room._id === String(roomParam)
   ) as Room;
   console.log(currentRoom);
 
@@ -29,8 +31,8 @@ const Room = () => {
 
   useEffect(() => {
     const handleJoin = () => {
-      if (currentRoom.id !== "" && socketRef.current) {
-        socketRef.current.emit("join_room", currentRoom.id);
+      if (currentRoom._id !== "" && socketRef.current) {
+        socketRef.current.emit("join_room", currentRoom._id);
       } else {
         alert("Room Id is not valid");
       }
@@ -49,7 +51,7 @@ const Room = () => {
       // if (socketRef.current && socketRef.current.active)
       //   socketRef.current.disconnect();
     };
-  }, [currentRoom.id]);
+  }, [currentRoom._id]);
 
   return currentRoom.type === "text" ? (
     <ChatRoom room={currentRoom} socket={socketRef}></ChatRoom>

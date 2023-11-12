@@ -6,6 +6,7 @@ import SpeakerWaveIcon from "@heroicons/react/20/solid/esm/SpeakerWaveIcon";
 import Member from "./Member";
 import Room from "@/Class/Room";
 import User from "@/Class/User";
+import { useSession } from "next-auth/react";
 
 const ICE_SERVERS = {
   iceServers: [
@@ -15,21 +16,28 @@ const ICE_SERVERS = {
   ],
 };
 
-const MockUser: User = {
-  id: Date.now().toString(),
-  username: "user" + Date.now().toString(),
-  image:
-    "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
-};
+// const user: User = {
+//   _id: Date.now().toString(),
+//   username: "user" + Date.now().toString(),
+//   image:
+//     "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj",
+// };
 
 const VoiceRoom = ({ room }: { room: Room }) => {
+  const { data: session } = useSession();
+  const user = {
+    ...session?.user,
+    image: session?.user?.image
+      ? session?.user?.image
+      : "https://cdn-icons-png.flaticon.com/512/147/147142.png",
+  } as User;
   const [userInRoom, setUserInRoom] = useState<User[]>([]);
 
   const joinVoiceRoom = (user: User) => {
     setUserInRoom((prev) => [...prev, user]);
   };
   const leaveVoiceRoom = (user: User) => {
-    setUserInRoom((prev) => prev.filter((u) => u.id !== user.id));
+    setUserInRoom((prev) => prev.filter((u) => u._id !== user._id));
   };
   // useSocket();
   const [micActive, setMicActive] = useState(true);
@@ -43,7 +51,7 @@ const VoiceRoom = ({ room }: { room: Room }) => {
   const userStreamRef = useRef<MediaStream>();
   const hostRef = useRef(false);
 
-  const roomName = room.id;
+  const roomName = room._id;
 
   useEffect(() => {
     socketRef.current = io("/", {
@@ -175,7 +183,7 @@ const VoiceRoom = ({ room }: { room: Room }) => {
 
     // Safely closes the existing connection established with the peer who left.
     if (rtcConnectionRef.current) {
-      leaveVoiceRoom(user)
+      leaveVoiceRoom(user);
       rtcConnectionRef.current.ontrack = null;
       rtcConnectionRef.current.onicecandidate = null;
       rtcConnectionRef.current.close();
@@ -282,9 +290,9 @@ const VoiceRoom = ({ room }: { room: Room }) => {
     if (socketRef.current)
       socketRef.current.emit("leave", {
         roomId: roomName,
-        user: MockUser,
+        user: user,
       }); // Let's the server know that user has left the room.
-    leaveVoiceRoom(MockUser)
+    leaveVoiceRoom(user);
 
     if (
       userVideoRef.current &&
@@ -321,20 +329,28 @@ const VoiceRoom = ({ room }: { room: Room }) => {
           if (socketRef.current)
             socketRef.current.emit("join", {
               roomId: roomName,
-              user: MockUser,
+              user: user,
             });
         }}
+        disabled={userInRoom.some((u) => u._id === user._id)}
       >
         <SpeakerWaveIcon className="w-5 h-5"></SpeakerWaveIcon>
         <span>{room.name}</span>
       </button>
       <div className="pl-11">
         {userInRoom.map((user, index) => (
-          <Member key={index} user={user} mic={micActive} toggleMic={toggleMic} leave={leaveRoom} showAction={MockUser.id === user.id}  />
+          <Member
+            key={index}
+            user={user}
+            mic={micActive}
+            toggleMic={toggleMic}
+            leave={leaveRoom}
+            showAction={user._id === user._id}
+          />
         ))}
       </div>
       <div>
-        <video autoPlay ref={userVideoRef} className="hidden" />
+        <video autoPlay ref={userVideoRef} muted className="hidden" />
         <video autoPlay ref={peerVideoRef} className="hidden" />
         {/* <button onClick={toggleMic} type="button">
           {micActive ? "Mute Mic" : "UnMute Mic"}

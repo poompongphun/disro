@@ -6,7 +6,11 @@ const ChatMessage = ({ user, text }: { user: User; text: string }) => {
     <div className="flex justify-start items-start gap-2">
       <div>
         <Image
-          src={user.image}
+          src={
+            user.image
+              ? user.image
+              : "https://cdn-icons-png.flaticon.com/512/147/147142.png"
+          }
           alt="Profile Picture"
           width={35}
           height={35}
@@ -18,9 +22,7 @@ const ChatMessage = ({ user, text }: { user: User; text: string }) => {
           <span className="text-md font-medium">{user.username}</span>
           <span className="text-xs text-gray-300 ml-1">12:00</span>
         </div>
-        <div>
-          {text}
-        </div>
+        <div>{text}</div>
       </div>
     </div>
   );
