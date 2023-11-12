@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "@/utils/axios";
+import { useDispatch } from "react-redux";
+import { deleteProjects } from "@/store/serverSlice";
+import Project from "@/Class/Project";
 
 const buttonPath = [
   {
@@ -19,12 +22,15 @@ const buttonPath = [
 ];
 
 const ProfileSettingLayout = ({ children }: { children: React.ReactNode }) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const { id } = useParams() as { id: string };
   const deletePj = async () => {
-    const delPj = await axios.post(
-      `/manageserver-service/deleteServer/${id}`,
-    );
-    console.log(delPj);
+    const delPj = await axios.post(`/manageserver-service/deleteServer/${id}`);
+    if (delPj) {
+      dispatch(deleteProjects({ _id: id } as Project));
+      router.push("/projects");
+    }
   };
   return (
     <div className="flex flex-row text-center h-full w-full">
