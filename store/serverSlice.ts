@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '@/utils/axios'
+import Category from '@/Class/Category'
+import Room from '@/Class/Room'
 
 
 export interface ProjectsState {
@@ -50,6 +52,27 @@ export const projectsSlice = createSlice({
                 return project
             })
         },
+        addCategory: (state, action: PayloadAction<{ category: Category , pjId: string}>) => {
+            state.value = state.value.map((project) => {
+                if (project._id === action.payload.pjId) {
+                    project.categories.push(action.payload.category)
+                }
+                return project
+            })
+        },
+        addRoomToCategory: (state, action: PayloadAction<Room>) => {
+            state.value = state.value.map((project) => {
+                if (project._id === action.payload._id) {
+                    project.categories = project.categories.map((category) => {
+                        if (category._id === action.payload._id) {
+                            category.room.push(action.payload)
+                        }
+                        return category
+                    })
+                }
+                return project
+            })
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -69,6 +92,6 @@ export const projectsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setProjects, addProjects, deleteProjects, updateProjects } = projectsSlice.actions
+export const { setProjects, addProjects, deleteProjects, updateProjects, addCategory, addRoomToCategory } = projectsSlice.actions
 
 export default projectsSlice.reducer

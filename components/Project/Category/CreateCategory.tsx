@@ -2,6 +2,8 @@ import { Dispatch, Fragment, SetStateAction, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useParams } from "next/navigation";
 import axios from "@/utils/axios";
+import { useDispatch } from "react-redux";
+import { updateProjects } from "@/store/serverSlice";
 
 const CreateCategory = ({
   open,
@@ -10,6 +12,7 @@ const CreateCategory = ({
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const dispatch = useDispatch();
   const cancelButtonRef = useRef(null);
   const [name, setName] = useState("");
   const { id } = useParams() as { id: string };
@@ -26,6 +29,7 @@ const CreateCategory = ({
       }
     );
     if (res) {
+      dispatch(updateProjects(res.data));
       setOpen(false);
     }
   };

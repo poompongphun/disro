@@ -2,6 +2,8 @@ import { Dispatch, Fragment, SetStateAction, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useParams } from "next/navigation";
 import axios from "@/utils/axios";
+import { useDispatch } from "react-redux";
+import { updateProjects } from "@/store/serverSlice";
 
 const CreateRoom = ({
   open,
@@ -12,9 +14,10 @@ const CreateRoom = ({
   setOpen: Dispatch<SetStateAction<boolean>>;
   categoriesId: string;
 }) => {
+  const dispatch = useDispatch();
   const cancelButtonRef = useRef(null);
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("text");
   const { id } = useParams() as { id: string };
 
   const submit = async (e: { preventDefault: () => void }) => {
@@ -29,8 +32,7 @@ const CreateRoom = ({
       }
     );
     if (res) {
-      console.log(res);
-
+      dispatch(updateProjects(res.data));
       setOpen(false);
     }
   };
