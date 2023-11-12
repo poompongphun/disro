@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import axios from "@/utils/axios";
 
 const buttonPath = [
   {
@@ -19,6 +20,12 @@ const buttonPath = [
 
 const ProfileSettingLayout = ({ children }: { children: React.ReactNode }) => {
   const { id } = useParams() as { id: string };
+  const deletePj = async () => {
+    const delPj = await axios.post(
+      `/manageserver-service/deleteServer/${id}`,
+    );
+    console.log(delPj);
+  };
   return (
     <div className="flex flex-row text-center h-full w-full">
       <div className="flex flex-col bg-[#132043] w-1/5 py-10 justify-between max-w-[300px]">
@@ -37,9 +44,7 @@ const ProfileSettingLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <button
           className="py-5 my-6 w-full hover:bg-[#1F4172] text-red-600"
-          onClick={() => {
-            alert("Delete Project");
-          }}
+          onClick={deletePj}
         >
           Delete Project
         </button>
