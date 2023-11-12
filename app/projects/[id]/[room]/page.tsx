@@ -7,12 +7,15 @@ import ChatRoom from "@/components/Project/Room/ChatRoom";
 import BoardRoom from "@/components/Project/Room/BoardRoom";
 import { Socket, io } from "socket.io-client";
 import { useEffect, useRef, useState } from "react";
+import { RootState } from "@/app/store";
+import { useSelector } from "react-redux";
 
 const Room = () => {
   // MockData
   const { id, room: roomParam } = useParams() as { room: string; id: string };
-  const project: Project = mockData.find(
-    (project) => project.id === String(id)
+  const projects = useSelector((state: RootState) => state.servers.value);
+  const project: Project = projects.find(
+    (project) => project._id === String(id)
   ) as Project;
   const AllRoom: Room[] = project.categories
     .map((category) => category.rooms)

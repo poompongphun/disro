@@ -2,12 +2,12 @@ import Category from "./Category";
 import User from "./User";
 
 interface Project {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   image: string;
   categories: Category[];
-  members: User[];
+  member: User[];
 }
 
 export default Project;

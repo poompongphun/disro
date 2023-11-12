@@ -1,9 +1,14 @@
+"use client";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import mockData from "@/Class/mockData.json";
 import AddProjectDialog from "../Project/AddProjectDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setProjects, fetchData } from "@/store/serverSlice";
+import { AppDispatch } from "@/app/store";
+import type { RootState } from "@/app/store";
+import { useSession } from "next-auth/react";
 
 const ButtonIcon = ({
   d,
@@ -70,6 +75,13 @@ const ButtonIcon = ({
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const projects = useSelector((state: RootState) => state.servers.value);
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
   return (
     <div className="h-screen flex">
       <div className="w-24 h-full bg-darkBlue py-4 flex flex-col justify-between items-center overflow-hidden">
@@ -86,12 +98,16 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
               d="M12 4.5v15m7.5-7.5h-15"
               onClick={() => setOpen(true)}
             ></ButtonIcon>
-            {mockData.map((data, index) => (
+            {projects.map((data, index) => (
               <ButtonIcon
-                routeName={"/projects/" + data.id}
+                routeName={"/projects/" + data._id}
                 key={index}
                 className="overflow-hidden"
-                img={data.image}
+                img={
+                  data.image
+                    ? data.image
+                    : "https://cdn-icons-png.flaticon.com/512/4019/4019731.png"
+                }
               ></ButtonIcon>
             ))}
           </div>

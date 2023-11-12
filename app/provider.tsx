@@ -1,10 +1,16 @@
-'use client';
-import { SessionProvider } from 'next-auth/react';
+"use client";
+import { SessionProvider } from "next-auth/react";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 export const CustomProviders = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <SessionProvider>
+      <Provider store={store}>{children}</Provider>
+    </SessionProvider>
+  );
 };
