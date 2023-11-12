@@ -8,10 +8,12 @@ import VoiceRoom from "./VoiceRoom";
 import BoardRoom from "./BoardRoom";
 import { useCollapse } from "react-collapsed";
 import Category from "@/Class/Category";
+import CreateRoom from "./CreateRoom";
 
 const Category = ({ category }: { category: Category }) => {
   const [isExpanded, setExpanded] = useState(true);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const [open, setOpen] = useState(false);
   return (
     <div className="p-1">
       <div className="flex justify-between items-center py-2">
@@ -31,12 +33,13 @@ const Category = ({ category }: { category: Category }) => {
           </button>
           <div>{category.name}</div>
         </div>
-        <button type="button">
+        <button type="button" onClick={() => setOpen(true)}>
           <PlusIcon className="w-5 h-5"></PlusIcon>
         </button>
+        <CreateRoom setOpen={setOpen} open={open} categoriesId={category._id} />
       </div>
       <div {...getCollapseProps()}>
-        {category.rooms.map((room, index) => {
+        {category.room.map((room, index) => {
           return room.type === "text" ? (
             <TextRoom key={index} room={room} />
           ) : room.type === "voice" ? (

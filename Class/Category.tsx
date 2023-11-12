@@ -1,9 +1,9 @@
 import Room from "./Room";
 
 interface Category {
-  id: string;
+  _id: string;
   name: string;
-  rooms: Room[];
+  room: Room[];
 }
 
 export default Category;
