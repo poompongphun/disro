@@ -338,14 +338,14 @@ const VoiceRoom = ({ room }: { room: Room }) => {
         <span>{room.name}</span>
       </button>
       <div className="pl-11">
-        {userInRoom.map((user, index) => (
+        {userInRoom.map((userRoom, index) => (
           <Member
             key={index}
-            user={user}
+            user={userRoom}
             mic={micActive}
             toggleMic={toggleMic}
             leave={leaveRoom}
-            showAction={user._id === user._id}
+            showAction={userRoom._id == user._id}
           />
         ))}
       </div>
