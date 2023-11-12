@@ -25,7 +25,7 @@ const initialState: ProjectsState = {
 export const fetchData = createAsyncThunk('projects/fetchData', async data => {
     console.log(data);
 
-    const res = await axios.get("/manageserver-service/servers/");
+    const res = await axios.get("/manageserver-service/servers");
     return res.data;
 });
 
