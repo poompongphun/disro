@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store";
@@ -8,6 +8,23 @@ import axios from "@/utils/axios";
 import { updateProjects } from "@/store/serverSlice";
 
 const SettingProjectSave = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      // form data
+      const formData = new FormData();
+      formData.append("file", file);
+      // upload
+      const img = await axios.post("http://127.0.0.1:5000/upload", formData);
+      setServerImg(img.data);
+    }
+  };
   const dispatch = useDispatch();
   const projects = useSelector((state: RootState) => state.servers.value);
   const router = useRouter();
@@ -75,8 +92,8 @@ const SettingProjectSave = () => {
         <div className="rounded-full bg-slate-400">
           <Image
             src={
-              project?.image
-                ? project?.image
+              serverImg != "undefined" && serverImg != "null"
+                ? serverImg
                 : "https://cdn-icons-png.flaticon.com/512/4019/4019731.png"
             }
             alt="avatar"
@@ -87,10 +104,22 @@ const SettingProjectSave = () => {
         </div>
         <p className="text-lg">แนะนำไฟล์ควรมีขนาด 512 x 512</p>
         <div className="flex flex-row gap-3">
-          <button className="bg-slate-400 rounded-full text-white px-6 py-2">
+          <input
+            type="file"
+            onChange={handleFileChange}
+            style={{ display: "none" }}
+            ref={fileInputRef}
+          />
+          <button
+            className="bg-slate-400 rounded-full text-white px-6 py-2"
+            onClick={() => fileInputRef.current?.click()}
+          >
             อัปโหลดไฟล์
           </button>
-          <button className="bg-slate-400 rounded-full text-white px-6 py-2">
+          <button
+            className="bg-slate-400 rounded-full text-white px-6 py-2"
+            onClick={() => setServerImg(String(project?.image))}
+          >
             ลบไฟล์
           </button>
         </div>
