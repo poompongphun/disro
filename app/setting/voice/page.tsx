@@ -25,7 +25,7 @@ const SettingVoice = () => {
     <>
       <div className="flex h-screen flex-col w-full p-10">
         <div className="flex justify-between ">
-          <div className="text-4xl">Setting</div>
+          <div className="text-4xl">Voice</div>
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
