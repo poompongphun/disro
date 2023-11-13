@@ -1,13 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import User from "@/Class/User";
 const SettingProfile = () => {
+  const { data: session } = useSession();
+  const user = session?.user as User;
+  console.log(user);
+
   const [showPopup, setShowPopup] = useState(false);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
   const confirmHandler = () => {
     setShowPopup(false);
   };
+
+  useEffect(() => {
+    if (user) {
+      setUsername(user.username);
+      setEmail(user.email);
+      setPhoneNumber(user.phoneNumber);
+      setDisplayName(user.username);
+      setAboutMe(user.aboutMe);
+    }
+  }, [user]);
   return (
     <>
       {/* popup */}
@@ -87,6 +108,7 @@ const SettingProfile = () => {
                 className="border border-slate-400 rounded-full px-10 py-2 text-black"
                 type="text"
                 disabled
+                value={username}
               />
             </div>
             <div className="flex flex-col py-8">
@@ -95,6 +117,7 @@ const SettingProfile = () => {
                 className="border border-slate-400 rounded-full px-10 py-2 text-black"
                 type="text"
                 disabled
+                value={email}
               />
             </div>
             <div className="flex flex-col py-8">
@@ -103,6 +126,7 @@ const SettingProfile = () => {
                 className="border border-slate-400 rounded-full px-10 py-2 text-black"
                 type="text"
                 disabled
+                value={phoneNumber}
               />
             </div>
             <button
@@ -133,6 +157,7 @@ const SettingProfile = () => {
                   className="border border-slate-400 rounded-full px-10 py-2 text-black"
                   type="text"
                   disabled
+                  value={displayName}
                 />
               </div>
               <div className="flex flex-col py-2">
@@ -141,6 +166,7 @@ const SettingProfile = () => {
                   className="border border-slate-400 rounded-md px-10 py-10 text-black"
                   type="text"
                   disabled
+                  value={aboutMe}
                 />
               </div>
             </div>

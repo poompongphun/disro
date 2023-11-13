@@ -5,6 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '@/utils/axios'
 import Category from '@/Class/Category'
 import Room from '@/Class/Room'
+import User from '@/Class/User'
 
 
 export interface ProjectsState {
@@ -24,11 +25,16 @@ const initialState: ProjectsState = {
 //     return res.data;
 // };
 
-export const fetchData = createAsyncThunk('projects/fetchData', async data => {
-    console.log(data);
+export const fetchData = createAsyncThunk<string, string>('projects/fetchData', async data => {
+    console.log("servers", data);
 
     const res = await axios.get("/manageserver-service/servers");
-    return res.data;
+    const myServer = res.data.filter((server: any) => {
+        return server.member.some((member: { id: string }) => member.id === data)
+    })
+    console.log(res);
+
+    return myServer;
 });
 
 export const projectsSlice = createSlice({
@@ -52,7 +58,7 @@ export const projectsSlice = createSlice({
                 return project
             })
         },
-        addCategory: (state, action: PayloadAction<{ category: Category , pjId: string}>) => {
+        addCategory: (state, action: PayloadAction<{ category: Category, pjId: string }>) => {
             state.value = state.value.map((project) => {
                 if (project._id === action.payload.pjId) {
                     project.categories.push(action.payload.category)

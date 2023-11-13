@@ -74,13 +74,16 @@ const ButtonIcon = ({
 };
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+  const { data: session } = useSession();
+  const user = session?.user as { _id: string };
+
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const projects = useSelector((state: RootState) => state.servers.value);
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
+    dispatch(fetchData(session ? user._id : ""));
+  }, [dispatch, user]);
 
   return (
     <div className="h-screen flex">
