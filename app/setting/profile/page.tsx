@@ -80,7 +80,7 @@ const SettingProfile = () => {
       )}
       <div className="flex h-screen flex-col w-full ">
         <div className="flex justify-between p-10">
-          <div className="text-4xl">Setting</div>
+          <div className="text-4xl">Profile</div>
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
